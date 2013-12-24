@@ -3,9 +3,10 @@
 <head>
     <title>Verbugator</title>
     <script src="/scripts/vendor/angular.js"></script>
+    <script src="/scripts/vendor/angular-route.js"></script>
     <script src="/scripts/app.js"></script>
 </head>
-<body>
+<body ng-controller="MainController">
    
     <div ng-controller="SearchController">
         <input type="text" ng-model="query" id="search" autofocus /> 
@@ -13,30 +14,9 @@
         <input type="button" ng-click="search(query, language.selected)" value="Conjugate" />
     </div>
 
-
-    <div ng-controller="VerbController">
-
-        <div ng-repeat="(key,val) in verbs.TENSES.INDICATIVE">
-            <div>
-                {{key}}
-            </div>
-            <ul>
-                <li ng-repeat="p in val track by $index">
-                    {{p}}
-                </li>
-            </ul>
-        </div>
-        
-        <div ng-repeat="tense in verbs.TENSES.SUBJUNCTIVE">
-            <div>
-                {{key}}
-            </div>
-            <ul>
-                <li ng-repeat="p in val track by $index">
-                    {{p}}
-                </li>
-            </ul>
-        </div>         
-    </div>
+    <div ng-view></div>   
+    <!----><div ng-controller="VerbController">
+          
+    </div>-->
 </body>
 </html>
