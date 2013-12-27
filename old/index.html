@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="verbugator">
+<head>
+    <title>Verbugator</title>
+    <script src="/scripts/vendor/angular.js"></script>
+    <script src="/scripts/vendor/angular-route.js"></script>
+    <!--<script src="/scripts/controllers.js"></script>-->
+    <script src="/scripts/app.js"></script>
+</head>
+<body ng-controller="MainController">
+   
+    <div ng-controller="SearchController">
+        <input type="text" ng-model="query" id="search" autofocus /> 
+        <select id="language" ng-model="language.selected" ng-options="k as v for (k,v) in languages"></select>
+        <input type="button" ng-click="search(query, language.selected)" value="Conjugate" />
+    </div>
+
+    <div ng-view></div>   
+    
+</body>
+</html>
