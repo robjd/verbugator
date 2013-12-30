@@ -1,22 +1,23 @@
-﻿<div ng-repeat="(key,val) in verbs.TENSES.INDICATIVE">
-         <div>
-             {{key}}
-         </div>
-         <ul>
-             <li ng-repeat="p in val track by $index">
-                 <span ng-bind-html="verbStem"></span><span ng-bind-html="p"></span>
-             </li>
-         </ul>
-     </div>
+﻿
 
-     <div ng-repeat="tense in verbs.TENSES.SUBJUNCTIVE">
-         <div>
-             {{key}}
-         </div>
-         <ul>
-             <li ng-repeat="p in val track by $index">
-                 <span ng-bind-html="verbStem"></span><span ng-bind-html="p"></span>
-</li>
-         </ul>
-     </div>    
-     
+<div ng-repeat="(key,val) in tables.INDICATIVE">
+    <div>
+        {{key}}
+    </div>
+    <ul>
+        <li ng-repeat="p in val track by $index">
+            <span ng-bind-html="verbStem"></span><span ng-bind-html="p"></span>
+        </li>
+    </ul>
+</div>
+
+<div ng-repeat="(key,val) in tables.SUBJUNCTIVE">
+    <div>
+        {{key}}
+    </div>
+    <ul>
+        <li ng-repeat="p in val track by $index">
+            <span ng-bind-html="verbStem"></span><span ng-bind-html="p"></span>
+        </li>
+    </ul>
+</div>

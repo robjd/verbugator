@@ -5,11 +5,7 @@
   <title>My AngularJS App</title>
 </head>
 <body ng-controller ="MainController">
-    <ul class="menu">
-        <li><a href="#/view1">view1</a></li>
-        <li><a href="#/view2">view2</a></li>
-    </ul>
-
+   
     <div ng-controller="SearchController">
         <input type="text" ng-model="query" id="search" autofocus />
         <select id="language" ng-model="language.selected" ng-options="k as v for (k,v) in languages"></select>
