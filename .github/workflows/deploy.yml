@@ -13,20 +13,40 @@ on:
           - prod
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
 
-    environment: ${{ inputs.environment }}
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Verify secret exists
+      - name: Create build artifact
         run: |
-          if [ -z "${{ secrets.TEST_KEY }}" ]; then
-            echo "Secret is missing"
-            exit 1
-          fi
+          mkdir output
+          echo "Build from commit $GITHUB_SHA" > output/build.txt
 
-          echo "Secret is configured"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application
+          path: output/
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: application
+          path: output/
+
+      - name: Deploy
+        run: |
+          echo "Deploying to ${{ inputs.environment }}"
+          cat output/build.txt
