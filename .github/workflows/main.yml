@@ -1,6 +1,8 @@
 name: CI
 
 on:
+  workflow_dispatch:
+
   push:
     branches:
       - master
@@ -14,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Build
-        run: echo "Put your build/test command here"
+        run: echo "build goes here"
