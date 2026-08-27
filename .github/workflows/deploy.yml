@@ -1,16 +1,26 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to deploy to
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    environment: ${{ inputs.environment }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Deploy
-        run: echo "Deployment commands here"
+        run: |
+          echo "Deploying to ${{ inputs.environment }}"
